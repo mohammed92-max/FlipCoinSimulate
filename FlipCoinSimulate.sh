@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-read -p "Enter number to toss coin" noOfTimes
+noOfTimes=50;
 heads=0
 tails=0
 
@@ -13,7 +13,29 @@ do
         else
                 ((tails++))
 	fi
+
+	if [[ $heads -eq 21 ]]
+	then
+		echo "Head is winner at 21 times"
+		break;
+	fi
+
+	if [[ $tails -eq 21 ]]
+        then
+                echo "Tail is winner at 21 times"
+		break;
+        fi
+
 done
 
-echo " Number of times heads has won is "$heads
-echo " Number of times tails has won is "$tails
+	if [[ $heads -eq 21 ]]
+        then
+           	diff=$(($heads-$tails));
+		echo "Heads won by $diff times to that of Tails"
+        fi
+
+        if [[ $tails -eq 21 ]]
+        then
+                diff=$(($tails-$heads));
+                echo "Tails won by $diff times to that of Heads"
+        fi
