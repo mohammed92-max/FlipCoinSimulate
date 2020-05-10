@@ -1,10 +1,19 @@
-#/bin/bash -x
+#!/bin/bash -x
 
-tossStatus=$((RANDOM%2));
+read -p "Enter number to toss coin" noOfTimes
+heads=0
+tails=0
 
- if [ $tossStatus -eq 1 ]
+for ((count=0; count<noOfTimes; count++))
+do
+        tossStatus=$((RANDOM%2))
+        if [ $tossStatus -eq 1 ]
         then
-             echo "heads is winner"
+                ((heads++))
         else
-             echo "tails is winner"
- fi
+                ((tails++))
+	fi
+done
+
+echo " Number of times heads has won is "$heads
+echo " Number of times tails has won is "$tails
